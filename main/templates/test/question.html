@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ test.title }}{% endblock %}
+
+{% block content %}
+    <h1>{{ test.title }}</h1>
+    <h2>Вопрос {{ current_question_index|add:1 }} из {{ test.questions.count }}</h2>
+    <p>{{ question.text }}</p>
+
+    <form method="post" id="question-form" action="{% url 'tests:test_view' test.id %}">
+        {% csrf_token %}
+        {% for answer in answers %}
+            <div>
+                <input type="checkbox" id="answer_{{ answer.id }}" name="answers" value="{{ answer.id }}">
+                <label for="answer_{{ answer.id }}">{{ answer.text }}</label>
+            </div>
+        {% endfor %}
+        <input type="hidden" name="current_question_id" value="{{ current_question_index }}">
+        <button type="submit">Далее</button>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+    </form>
+{% endblock %}
