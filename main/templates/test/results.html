@@ -3,9 +3,16 @@
 {% block title %}Результаты Теста {{ test.title }}{% endblock %}
 
 {% block content %}
-    <h1>Результаты теста: {{ test.title }}</h1>
-    <p>Правильные ответы: {{ correct_answers }}</p>
-    <p>Неправильные ответы: {{ incorrect_answers }}</p>
-    <p>Процент правильных ответов: {{ percentage_correct|floatformat:2 }}%</p>
-    <a href="{% url 'tests:test_view' test.id %}">Пройти тест снова</a>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Результаты теста: {{ test.title }}</h1>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Результаты</h5>
+            <p class="card-text"><strong>Правильные ответы:</strong> {{ correct_answers }}</p>
+            <p class="card-text"><strong>Неправильные ответы:</strong> {{ incorrect_answers }}</p>
+            <p class="card-text"><strong>Процент правильных ответов:</strong> {{ percentage_correct|floatformat:2 }}%</p>
+            <a href="{% url 'tests_app:test_view' test.id %}" class="btn btn-primary">Пройти тест снова</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

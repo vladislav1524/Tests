@@ -82,7 +82,7 @@ class Question(models.Model):
         return self.text
     
     def get_absolute_url(self):
-        return reverse('admin:tests_question_change', args=[self.pk])
+        return reverse('admin:tests_app_question_change', args=[self.pk])
     
         
 # ответ         

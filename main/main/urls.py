@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns, static
-from tests import views
+from tests_app import views
 from allauth.account.views import PasswordChangeView
 from django.views.generic import TemplateView
 
@@ -20,7 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('social_django.urls', namespace='social')),
     path('_nested_admin/', include('nested_admin.urls')),
-    path('', include('tests.urls', namespace='tests')),
+    path('', include('tests_app.urls', namespace='tests_app')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

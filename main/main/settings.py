@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.vk',
-    'tests',
+    'tests_app',
 ]
 
 MIDDLEWARE = [
@@ -116,11 +116,11 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-AUTH_USER_MODEL = 'tests.CustomUser' 
+AUTH_USER_MODEL = 'tests_app.CustomUser' 
 
 LOGIN_URL = reverse_lazy('first_page_login')
 
-LOGIN_REDIRECT_URL = reverse_lazy('tests:index')
+LOGIN_REDIRECT_URL = reverse_lazy('tests_app:index')
 
 SITE_ID = 1
 
@@ -131,7 +131,7 @@ ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
 ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 
-ACCOUNT_FORMS = {'signup': 'tests.forms.CustomSignupForm'}
+ACCOUNT_FORMS = {'signup': 'tests_app.forms.CustomSignupForm'}
 
 
 AUTHENTICATION_BACKENDS = (

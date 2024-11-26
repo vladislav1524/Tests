@@ -11,7 +11,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ test.title }}</h5>
                             <p class="">Вопросов: {{ test.count_questions }}</p>
-                            <a href="{% url 'tests:test_view' test.id %}" class="btn btn-primary">Пройти тест</a>
+                            <a href="{% url 'tests_app:test_view' test.id %}" class="btn btn-primary">Пройти тест</a>
                         </div>
                     </div>
                 </div>

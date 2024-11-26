@@ -44,15 +44,15 @@ def test_view(request, test_id):
         next_question_id = current_question_id + 1
         if next_question_id < len(questions):
             request.session['current_question_index'] = next_question_id
-            return redirect(reverse('tests:test_question', args=[test_id, next_question_id]))
+            return redirect(reverse('tests_app:test_question', args=[test_id, next_question_id]))
         else:
-            return redirect(reverse('tests:test_results', args=[test_id]))
+            return redirect(reverse('tests_app:test_results', args=[test_id]))
         
     
     # сохранение индекса текущего вопроса в сессии для предотвращения перескакивания вопросов
     request.session['current_question_index'] = 0 
     # Отображение первого вопроса
-    return redirect(reverse('tests:test_question', args=[test_id, 0]))
+    return redirect(reverse('tests_app:test_question', args=[test_id, 0]))
 
 
 @login_required
@@ -63,10 +63,10 @@ def test_question_view(request, test_id, question_index):
     # Проверка на соответствие текущего индекса вопроса и индекса в сессии
     current_question_index = request.session.get('current_question_index', 0)
     if question_index != current_question_index:
-        return redirect(reverse('tests:test_question', args=[test_id, current_question_index]))
+        return redirect(reverse('tests_app:test_question', args=[test_id, current_question_index]))
 
     if question_index >= len(questions):
-        return redirect(reverse('tests:test_results', args=[test_id]))
+        return redirect(reverse('tests_app:test_results', args=[test_id]))
     
     question = questions[question_index]
     answers = question.answers.all()
