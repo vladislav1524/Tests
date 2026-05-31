@@ -43,39 +43,6 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-## Если хотите протестировать аутентификацию через социальные сети 🌐:
-1. Установите Ngrok для использования вашего компьютера как сервера и публикации сайта с HTTPS [Ссылка на Ngrok](https://ngrok.com/)
-
-2. В консоли Ngrok выполните:
-```bash
-ngrok http 8000
-```
-Либо получите бесплатный домен в личном кабинете и выполните:
-```bash
-ngrok http --hostname=<your host> 8000  
-```
-3. создайте и настройте приложения для входа через соц сети добавьте данные в .env:
-
-*Vk*: https://dev.vk.com/ru
-
-*discord*: https://discord.com/developers/applications
-
-*google*: https://console.cloud.google.com/cloud-resource-manager
-
-4. Добавьте ваш домен Ngrok в CSRF_TRUSTED_ORIGINS и ALLOWED_HOSTS.
-```bash
-python manage.py runserver
-```
-5. Раскомментируйте строки ниже в settings.py (строки 164-166):
-```python
-SECURE_SSL_REDIRECT = True  
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
-```
-и запустите проект:
-```bash
-python manage.py runserver
-```
 
 ## Задание💼:
 Нужно сделать простой сервис проведения тестирования по каким-либо темам. Т.е. есть тесты с вариантами ответов, один или несколько вариантов должны быть правильными. Тесты группируются в наборы тестов, которые затем пользователь может проходить и видеть свой результат.
